@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: CC0-1.0
 # Requires sed -r; use sed -i -r -f 'blockbench_to_minetest.sed' 'model.obj' for easiest results
 
 # Remove comments

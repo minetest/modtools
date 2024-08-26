@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: CC0-1.0 -->
 # `blockbench_to_minetest.sed` Usage Instructions
 
 This file is a script for the [sed](https://en.wikipedia.org/wiki/Sed) unix command-line utility that takes [Blockbench](https://www.blockbench.net/)-generated WaveFront OBJ model files (with correct configuration, see below) and modifies them such that Minetest's texture mapping will work correctly for them.

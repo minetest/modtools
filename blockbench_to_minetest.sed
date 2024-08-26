@@ -2,7 +2,7 @@
 # Requires sed -r; use sed -i -r -f 'blockbench_to_minetest.sed' 'model.obj' for easiest results
 
 # Remove comments
-/^#\s.*$/d
+/^#.*$/d
 
 # Minetest doesn't use materials
 /mtllib.*/d

@@ -5,13 +5,13 @@ This file is a script for the [sed](https://en.wikipedia.org/wiki/Sed) unix comm
 
 ## Setting up the Blockbench Project
 
-If your model only uses one texture (one entry in the `tiles` array), the only thing this script will do is remove comments, empty lines, and commands that Minetest ignores.  
+If your model only uses one texture (one entry in the `tiles` array), the only thing this script will do is remove comments, empty lines, and commands that Minetest does not use (such as material specifications).  
 
 Otherwise, if you need to use more than one texture, this script will allow you to specify textures per-"cube" (in blockbench terms) by renaming cubes.  
 
-By default all cubes will use the first entry in the `tiles` array, but by naming a cube `mat<n>` where `n` is a positive whole number, you can specify that that cube and all the cubes following should use the texture `n+1`; for example, naming a cube `mat1` will use the second tile from that point on until a cube named `mat2` is encountered, which will use the third tile and so on.  
+By default all cubes will use the first entry in the `tiles` array, but by naming a cube `mat<n>` where `n` is a positive whole number, you can specify that that cube and all the following cubes (those below it in the tree viewer) should use the texture `n+1`; for example, naming a cube `mat1` will use the second tile from that point on until a cube named `mat2` is encountered, which will use the third tile and so on.  
 
-Be aware that the textures must be specified in increasing numerical order, and `mat0` will result in an invalid file as all vertices are by default part of the 0th vertex group.
+Be aware that the textures must be specified in increasing numerical order, and `mat0` will result in an invalid file as `0` is not a valid group ID (all vertices are by default part of the 0th vertex group).
 
 ## Using the Script
 

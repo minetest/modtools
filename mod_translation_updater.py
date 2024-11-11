@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Script to generate Minetest translation template files and update
+# Script to generate Luanti translation template files and update
 # translation files.
 #
 # Copyright (C) 2019 Joachim Stolberg, 2020 FaceDeer, 2020 Louis Royer,
@@ -193,7 +193,7 @@ def get_modname(folder):
 					return match.group(1)
 	except FileNotFoundError:
 		folder_name = os.path.basename(folder)
-		# Special case when run in Minetest's builtin directory
+		# Special case when run in Luanti's builtin directory
 		return "__builtin" if folder_name == "builtin" else folder_name
 
 # If there are already .tr files in /locale, returns a list of their names

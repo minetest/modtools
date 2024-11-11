@@ -1,9 +1,9 @@
-# `mod_translation_updater.py`—Minetest Mod Translation Updater
+# `mod_translation_updater.py`—Luanti Mod Translation Updater
 
-This Python script is intended for use with localized Minetest mods, i.e., mods that use
+This Python script is intended for use with localized Luanti mods, i.e., mods that use
 `*.tr` and contain translatable strings of the form `S("This string can be translated")`.
 It extracts the strings from the mod's source code and updates the localization files
-accordingly. It can also be used to update the `*.tr` files in Minetest's `builtin` component.
+accordingly. It can also be used to update the `*.tr` files in Luanti's `builtin` component.
 
 ## Preparing your source code
 
@@ -12,7 +12,7 @@ to prepare your source code accordingly.
 
 ### Choosing the textdomain name
 
-It is recommended to set the textdomain name (for `minetest.get_translator`) to be identical
+It is recommended to set the textdomain name (for `core.get_translator`) to be identical
 of the mod name as the script will automatically detect it. If the textdomain name differs,
 you may have to manually change the `# textdomain:` line of newly generated files.
 
@@ -23,12 +23,12 @@ removed.
 ### Defining the helper functions
 
 In any source code file with translatable strings, you have to manually define helper
-functions at the top with something like `local S = minetest.get_translator("<textdomain>")`.
+functions at the top with something like `local S = core.get_translator("<textdomain>")`.
 Optionally, you can also define additional helper functions `FS`, `NS` and `NFS` if needed.
 
 Here is the list of all recognized function names. All functions return a string.
 
-* `S`: Returns translation of input. See Minetest's `lua_api.md`. You should always have at
+* `S`: Returns translation of input. See Luanti's `lua_api.md`. You should always have at
        least this function defined.
 * `NS`: Returns the input. Useful to make a string visible to the script without actually
         translating it here.
@@ -39,10 +39,10 @@ Here is the list of all recognized function names. All functions return a string
 
 Here is the boilerplate code you have to add at the top of your source code file:
 
-    local S = minetest.get_translator("<textdomain>")
+    local S = core.get_translator("<textdomain>")
     local NS = function(s) return s end
-    local FS = function(...) return minetest.formspec_escape(S(...)) end
-    local NFS = function(s) return minetest.formspec_escape(s) end
+    local FS = function(...) return core.formspec_escape(S(...)) end
+    local NFS = function(s) return core.formspec_escape(s) end
 
 Replace `<textdomain>` above and optionally delete `NS`, `FS` and/or `NFS` if you don't need
 them.
@@ -72,8 +72,8 @@ Undetectable notations:
 This minimal code example sends "Hello world!" to all players, but translated according to
 each player's language:
 
-    local S = minetest.get_translator("example")
-    minetest.chat_send_all(S("Hello world!"))
+    local S = core.get_translator("example")
+    core.chat_send_all(S("Hello world!"))
 
 ### How to use `NS`
 
@@ -87,7 +87,7 @@ strings to they can be later output in a function. Like so:
 
 If you want to translate the fruit names when `return_fruit` is run, but have the
 *untranslated* fruit names in the `fruit` table stored, this is where `NS` will help.
-It will show the script the string without Minetest translating it. The script could be made
+It will show the script the string without Luanti translating it. The script could be made
 translatable like this:
 
     local fruit = { NS("Apple"), NS("Orange"), NS("Pear") }
@@ -212,5 +212,5 @@ this comment intact so this line can be moved (or removed) properly in subsequen
 
 ## Updating `builtin`
 
-To update the `builtin` component of Minetest, change the working directory to `builtin` of
-the Minetest source code repository, then run this script from there.
+To update the `builtin` component of Luanti, change the working directory to `builtin` of
+the Luanti source code repository, then run this script from there.

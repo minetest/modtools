@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: CC0-1.0
-# Requires sed -r; use sed -i -r -f 'blockbench_to_minetest.sed' 'model.obj' for easiest results
+# Requires sed -r; use sed -i -r -f 'blockbench_to_luanti.sed' 'model.obj' for easiest results
 
 # Remove comments
 /^#.*$/d
 
-# Minetest doesn't use materials
+# Luanti doesn't use materials
 /mtllib.*/d
 /usemtl.*/d
 
